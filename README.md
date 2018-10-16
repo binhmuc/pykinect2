@@ -23,6 +23,12 @@ make
 [sudo] pip install numpy
 ```
 
+*Because in python 3.X cannot use urllib2, so go the this url 
+```
+https://raw.githubusercontent.com/numpy/numpy/master/tools/swig/numpy.i
+```
+Copy content and create file numpy.i, and paste !!!
+
 * install package
 
 ```shell
