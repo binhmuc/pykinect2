@@ -2,16 +2,17 @@
 
 from distutils.core import setup, Extension
 from distutils.command.build import build
-import urllib2
+import urllib3
 import os
 
-
+http = urllib3.PoolManager()
 
 URL = 'https://raw.githubusercontent.com/numpy/numpy/master/tools/swig/numpy.i'
 if not os.path.isfile('numpy.i'):
   with open('numpy.i', 'w') as f:
-    content = urllib2.urlopen(URL).read()
-    f.write(content)
+    # content = urllib3.urlopen(URL).read()
+    response = http.request('GET', url)
+    f.write(response)
 
 kinect2_module = Extension('_kinect2',
   include_dirs=['src'],
